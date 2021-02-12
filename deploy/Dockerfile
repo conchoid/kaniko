@@ -32,7 +32,7 @@ RUN mkdir -p /kaniko/.docker
 COPY . .
 RUN make GOARCH=${GOARCH}
 
-FROM debian:stretch-slim
+FROM debian:buster-slim
 COPY --from=0 /go/src/github.com/GoogleContainerTools/kaniko/out/executor /kaniko/executor
 COPY --from=0 /usr/local/bin/docker-credential-gcr /kaniko/docker-credential-gcr
 COPY --from=0 /go/src/github.com/awslabs/amazon-ecr-credential-helper/bin/linux-amd64/docker-credential-ecr-login /kaniko/docker-credential-ecr-login
